@@ -22,14 +22,6 @@ function wait_for_user
     printf 'import time\nwhile True:\n  time.sleep(1)\n' | python
 end
 
-#Another way to do what the if statements do
-#I commented this out because I think the if statements are easier to read
-
-#contains -- '--no-build' $argv
-#or build-dronology
-#start_dronology_session
-#exit
-
 if contains -- '--no-build' $argv
     echo skipping build
     start_dronology_session
