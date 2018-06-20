@@ -17,6 +17,11 @@ function start_dronology_session
     tmux -2 attach-session -t $TMUX_SESSION
 end
 
+function wait_for_user
+    echo Press Ctrl '+' C to exit
+    printf 'import time\nwhile True:\n  time.sleep(1)\n' | python
+end
+
 #Another way to do what the if statements do
 #I commented this out because I think the if statements are easier to read
 
@@ -30,4 +35,7 @@ if contains -- '--no-build' $argv
     start_dronology_session
 else if build-dronology
     start_dronology_session
+else
+    # This will pause until the user exits
+    wait_for_user
 end
