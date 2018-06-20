@@ -1,0 +1,6 @@
+#! /usr/bin/fish
+
+source $HOME/bin/dronology-vars.fish
+
+cd $DRONOLOGY_DIR
+mvn install

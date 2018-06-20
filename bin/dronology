@@ -1,0 +1,33 @@
+#! /usr/bin/fish
+
+function start_dronology_session
+    set TMUX_SESSION "DronologyTest"
+    tmux -2 new -d -s "$TMUX_SESSION"
+    #tmux neww -t "$TMUX_SESSION:1" -n "dronology"
+    tmux split-window -p 30 -v
+    tmux select-pane -t 0
+    tmux send-keys "launcher" C-m
+    tmux select-pane -t 1
+    tmux send-keys "vaadin" C-m
+    tmux split-window -h
+    tmux select-pane -t 2
+    tmux send-keys "ground-station" C-m
+    tmux select-pane -t 0
+    open 'http://localhost:8080/vaadin'
+    tmux -2 attach-session -t $TMUX_SESSION
+end
+
+#Another way to do what the if statements do
+#I commented this out because I think the if statements are easier to read
+
+#contains -- '--no-build' $argv
+#or build-dronology
+#start_dronology_session
+#exit
+
+if contains -- '--no-build' $argv
+    echo skipping build
+    start_dronology_session
+else if build-dronology
+    start_dronology_session
+end

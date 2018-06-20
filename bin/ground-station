@@ -1,0 +1,5 @@
+#! /usr/bin/fish
+
+source $HOME/bin/dronology-vars.fish
+
+ground_station_func

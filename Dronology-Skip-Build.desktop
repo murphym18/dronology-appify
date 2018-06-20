@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=konsole -e fish -c 'dronology --no-build'
+Name=Dronology Launch
+Comment=Start Dronology without building
